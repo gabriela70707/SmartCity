@@ -26,7 +26,7 @@ Os dados dos sensores devem incluir:
 são os tipos dos sensores
 
 
-Deve ter login de usuario
+Deve ter login de usuario e ter como sair e deslogar
 Implementar autenticação utilizando JSON Web Tokens (JWT) para proteger os endpoints.
 Criar um super usuário para o nosso api_smart.
 • username = seu primeiro nome (exatamente) sem acentuação. Gabriela
@@ -52,7 +52,7 @@ Atualizar o status do sensor (ativo, inativo).
 5. Dados:
 Criar método para capturar dados de sensores e ambientes que estão nas planilhas disponibilizadas.
 
-Os dados poderão ser exportados no formato de planilhas.
+Os dados poderão ser exportados no formato de planilhas. - ter um endpoint so para isso 
 
 
 🎯 O que o Adm deve fazer:
