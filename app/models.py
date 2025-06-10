@@ -7,7 +7,7 @@ class Usuario(AbstractUser):
     def  __str__(self):
         return self.username
 
-class Sensores(models.Model):
+class Sensores(models.Model):  #colocar choices para o nome do sensor e ver se precisa de choice em algum outro campo
     sensor = models.CharField(max_length=40)
     mac_address = models.CharField(max_length=17)
     unidade_med = models.CharField(max_length=3)
