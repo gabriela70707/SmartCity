@@ -35,4 +35,4 @@ class Historico(models.Model):
     timestamp = models.IntegerField()
 
     def __str__(self):
-        return f"{self.sensor} - {self.valor} - {self.timestamp}"
+        return f"{self.sensor} - {self.valor} - {self.timestamp} - {self.ambiente}"
