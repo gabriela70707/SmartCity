@@ -7,13 +7,19 @@ class Usuario(AbstractUser):
     def  __str__(self):
         return self.username
 
-class Sensores(models.Model):  #colocar choices para o nome do sensor e ver se precisa de choice em algum outro campo
-    sensor = models.CharField(max_length=40)
+class Sensores(models.Model):  
+    SENSORES = [
+        ('Temperatura', 'Temperatura'),
+        ('Luminosidade', 'Luminosidade'),
+        ('Umidade', 'Umidade'),
+        ('Contador', 'Contador')
+    ]
+    sensor = models.CharField(max_length=12, choices=SENSORES)
     mac_address = models.CharField(max_length=17)
     unidade_med = models.CharField(max_length=3)
     latitude = models.FloatField()
     longitude = models.FloatField()
-    status = models.BooleanField()
+    status = models.BooleanField() 
 
     def __str__(self):
         return self.sensor

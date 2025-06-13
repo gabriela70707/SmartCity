@@ -63,3 +63,30 @@ possa armazenar os dados de temperatura, luminosidade e umidade.
 que eu possa monitorar as condições ambientais.
 3. Como administrador, eu quero implementar autenticação JWT, para garantir que apenas
 usuários autorizados acessem os dados.
+
+
+- Crud em sensores e ambientes  
+- Login
+
+-Crie as opções de CRUD para cada registro. o Desenvolva opções de localização de
+dados, principalmente por sensor, data e status.
+
+-Atualizar o status do sensor (ativo, inativo).
+
+
+
+
+
+oq eu entendi 
+
+preciso ter a opção de adicionar dados em ambientes e sensores
+preciso importar os arquivos com os dados 
+preciso poder atualalizar e deletar esses dados
+preciso filtrar esses dados 
+preciso exportar os dados da tabela 
+
+
+
+
+O que tenho que fazer
+trocar true por ativo e false para inativo - no front
