@@ -1,92 +1,101 @@
-Situação a ser resolvida:
+# 🌆 Smart City - Monitoramento Urbano com Django Rest Framework
 
-A escola TecnoVille está desenvolvendo um projeto de transformação urbana baseado no conceito de Smart City. A
-ideia é implementar sensores em pontos estratégicos da cidade para coletar dados em tempo real sobre:
+## 📌 Sobre o Projeto
+A escola **TecnoVille** está desenvolvendo um projeto de **transformação urbana** baseado no conceito de **Smart City**. A ideia é instalar sensores em pontos estratégicos da cidade para coletar **dados em tempo real** sobre:
 
-• 🌡️ Temperatura
-• 💧 Umidade
-• 💡 Luminosidade
-• 🔢Contador de pessoas
+✅ 🌡️ **Temperatura**  
+✅ 💧 **Umidade**  
+✅ 💡 **Luminosidade**  
+✅ 🔢 **Contador de pessoas**  
 
-Esses sensores serão instalados em locais como praças, corredores, pátios etc.
+Esses sensores serão posicionados em **praças, corredores e pátios**, permitindo o **monitoramento das condições urbanas** e ajudando na **tomada de decisões estratégicas**.
 
-O objetivo do projeto é desenvolver um back-end utilizando Django Rest Framework para gerenciar esses
-dados, que serão usados para monitorar as condições
-em tempo real. A autenticação será realizada através de JSON Web Tokens (JWT).
+---
 
-Sobre a Api:
-A API deve ter endpoints para criar, ler, atualizar e deletar (CRUD) dados dos sensores e ambientes.
+## ⚙️ Tecnologias Utilizadas
+Este projeto foi desenvolvido utilizando:
 
-Os dados devem contem 
-Os dados dos sensores devem incluir:
- Temperatura (°C)
- Luminosidade (lux)
- Umidade (%)
- Contador(num)
-são os tipos dos sensores
+- 🐍 **Python 3.11**
+- 🎛️ **Django Rest Framework** (API REST)
+- 🔐 **JWT (JSON Web Tokens)** (Autenticação segura)
+- 🗃️ **Banco de dados SQLite** (Padrão Django)
+- 📊 **Pandas & OpenPyXL** (Para importação/exportação de planilhas)
 
+---
 
-Deve ter login de usuario e ter como sair e deslogar
-Implementar autenticação utilizando JSON Web Tokens (JWT) para proteger os endpoints.
-Criar um super usuário para o nosso api_smart.
-• username = seu primeiro nome (exatamente) sem acentuação. Gabriela
-• password = seu número de matrícula no senai (está no portal) 24240113
+## 🌐 API - Endpoints Principais
+A API permite **CRUD completo** sobre sensores e ambientes, além de opções avançadas de **importação e exportação de dados**.
 
+### 🔹 CRUD - Sensores e Ambientes
+| Método  | Endpoint               | Descrição |
+|---------|-----------------------|------------|
+| `POST`  | `/api/sensores/`       | **Criar** um novo sensor |
+| `GET`   | `/api/sensores/`       | **Listar** todos os sensores |
+| `PUT`   | `/api/sensores/{id}/`  | **Atualizar** um sensor existente |
+| `DELETE`| `/api/sensores/{id}/`  | **Remover** um sensor |
 
-Relacionamento entre tabelas ✅
-Os relacionamentos deverão ser aplicados nas tabelas conforme
-diagrama já mencionado acima.
+Além disso, a API permite **filtrar dados** por **sensor, data e status**.
 
-Gerenciamento dos Sensores:
- Crie as opções de CRUD para cada registro. 
+---
 
-filtros:  tentei mais nao sei se vai funcionar ainda
-Desenvolva opções de localização de
-dados, principalmente por sensor, data e status.
+### 🔹 Autenticação JWT
+A API utiliza **tokens JWT** para autenticação segura. O login é realizado via:
 
+```bash
+POST /api/token/
+```
+Para proteger os endpoints, apenas usuários autenticados podem registrar, atualizar ou deletar dados.
 
-Atualizar o status do sensor (ativo, inativo).
+### 🔹 Importação de Arquivos
+Os dados dos sensores podem ser importados via planilhas Excel através deste endpoint:
+`POST` `/api/importar-excel/`
 
+### 🔹 Exportação de Arquivos
+O sistema pode gerar planilhas Excel automaticamente com os dados registrados, utilizando:
+`GET` `/api/exportar-excel/`
 
+---
 
-5. Dados:
-Criar método para capturar dados de sensores e ambientes que estão nas planilhas disponibilizadas.
+## 🛠️ Configuração do Ambiente
+1️⃣ Instalar Dependências
+Antes de iniciar, certifique-se de instalar as dependências do projeto:
 
-Os dados poderão ser exportados no formato de planilhas. - ter um endpoint so para isso 
+```bash 
+pip install -r requirements.txt
+```
 
+2️⃣ Rodar Migrações
+```bash 
+python manage.py migrate
+```
 
-🎯 O que o Adm deve fazer:
-Histórias de Usuário:
-1. Como administrador, eu quero criar um endpoint para registrar dados de sensores, para que eu
-possa armazenar os dados de temperatura, luminosidade e umidade.
-2. Como administrador, eu quero criar um endpoint para visualizar os dados dos sensores, para
-que eu possa monitorar as condições ambientais.
-3. Como administrador, eu quero implementar autenticação JWT, para garantir que apenas
-usuários autorizados acessem os dados.
+3️⃣ Criar um Superusuário
+```bash
+python manage.py createsuperuser
+```
+**Ou usar um existente: (caso siga o passo 4)**
+username: Gabriela
+password: 24240113
 
+4️⃣ Carregar Dados Iniciais
+Se quiser iniciar o projeto com dados registrados, use:
 
-- Crud em sensores e ambientes  
-- Login
+```bash
+python manage.py loaddata dados.json
+```
 
--Crie as opções de CRUD para cada registro. o Desenvolva opções de localização de
-dados, principalmente por sensor, data e status.
+## 🎯 O que o Administrador pode fazer?
+O administrador pode: 
+✅ Adicionar dados em ambientes e sensores.
+✅ Importar arquivos Excel com novos registros.
+✅ Atualizar e deletar dados existentes.
+✅ Filtrar registros por sensor, data e status.
+✅ Exportar dados da tabela para planilhas Excel.
 
--Atualizar o status do sensor (ativo, inativo).
+## 📌 Relacionamento Entre Tabelas
+O sistema segue um modelo relacional entre Sensores, Ambientes e Histórico, garantindo uma estrutura organizada para os dados capturados.
 
+## 💡 Considerações Finais
+Este projeto tem como objetivo tornar o monitoramento urbano mais eficiente, facilitando a gestão de sensores e permitindo decisões baseadas em dados reais. 🔥
 
-
-
-
-oq eu entendi 
-
-preciso ter a opção de adicionar dados em ambientes e sensores
-preciso importar os arquivos com os dados 
-preciso poder atualalizar e deletar esses dados
-preciso filtrar esses dados 
-preciso exportar os dados da tabela 
-
-
-
-
-O que tenho que fazer
-trocar true por ativo e false para inativo - no front
+Se quiser contribuir ou sugerir melhorias, fique à vontade! 😃🚀

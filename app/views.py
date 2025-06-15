@@ -229,8 +229,10 @@ class ImportExcelAPIView(APIView):
             ambiente_ids_validos = set(Ambientes.objects.values_list("id", flat=True))
 
             # Filtrando os registros inválidos antes do bulk_create
-            df = df[df["sensor_id"].isin(sensor_ids_validos)]
-            df = df[df["ambiente_id"].isin(ambiente_ids_validos)]
+            if "sensor_id" in df.columns:
+                df = df[df["sensor_id"].isin(sensor_ids_validos)]
+            if "ambiente_id" in df.columns:
+                df = df[df["ambiente_id"].isin(ambiente_ids_validos)]
 
             # Convertendo status para booleano apenas se a coluna existir
             if "status" in df.columns:
