@@ -56,6 +56,29 @@ O sistema pode gerar planilhas Excel automaticamente com os dados registrados, u
 
 ---
 
+## Rodando o projeto 🚀
+1️⃣ Clonando o Projeto
+Para rodar o projeto basta clona-lo no terminal da sua maquina:
+```git clone https://github.com/gabriela70707/SmartCity.git```
+```cd SmartCity```
+```code .```  (Para abrir no VsCode, caso nao tenha instalado, instale e execute o comando novamente)
+
+**Após isso, criar a env e ativa-lá:**
+
+2️⃣ Ativando a ENV
+**No terminal do VsCode:**
+
+```bash
+python -m venv env 
+cd .\env\Scripts\
+.\activate
+```
+**após isso voltar para a pasta raiz utilizando o comando:**
+
+`cd..` *2 vezes*
+
+---
+
 ## 🛠️ Configuração do Ambiente
 1️⃣ Instalar Dependências
 Antes de iniciar, certifique-se de instalar as dependências do projeto:
