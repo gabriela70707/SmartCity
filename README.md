@@ -48,10 +48,12 @@ Para proteger os endpoints, apenas usuários autenticados podem registrar, atual
 
 ### 🔹 Importação de Arquivos
 Os dados dos sensores podem ser importados via planilhas Excel através deste endpoint:
+
 `POST` `/api/importar-excel/`
 
 ### 🔹 Exportação de Arquivos
 O sistema pode gerar planilhas Excel automaticamente com os dados registrados, utilizando:
+
 `GET` `/api/exportar-excel/`
 
 ---
