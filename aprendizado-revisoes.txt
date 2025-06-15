@@ -1,0 +1,6 @@
+Para o nome da tabela aparecer com o plural correto no django admin
+    class Meta:
+        verbose_name_plural = "Sensores"  #para aparecer o nome correto da tabela no admin do django 
+
+
+Filtrar usando query parameters é muito util e simples, alem de funcionar perfeitamente

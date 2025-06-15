@@ -6,7 +6,7 @@ class UsuarioAdmin(UserAdmin):
     pass
 
 class SensoresAdmin(admin.ModelAdmin):
-    list_filter = ('id','sensor') 
+    list_filter = ('id','sensor')  #adiciona uma filtragem para visualização dos dados na pagina de admin
 
 class HistoricoAdmin(admin.ModelAdmin):
     list_filter = ('timestamp', 'id')
