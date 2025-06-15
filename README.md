@@ -59,8 +59,11 @@ O sistema pode gerar planilhas Excel automaticamente com os dados registrados, u
 ## Rodando o projeto 🚀
 1️⃣ Clonando o Projeto
 Para rodar o projeto basta clona-lo no terminal da sua maquina:
+
 ```git clone https://github.com/gabriela70707/SmartCity.git```
+
 ```cd SmartCity```
+
 ```code .```  (Para abrir no VsCode, caso nao tenha instalado, instale e execute o comando novamente)
 
 **Após isso, criar a env e ativa-lá:**
@@ -96,9 +99,12 @@ python manage.py migrate
 ```bash
 python manage.py createsuperuser
 ```
-**Ou usar um existente: (caso siga o passo 4)**
-username: Gabriela
-password: 24240113
+**Ou usar um existente: (caso decida seguir o passo 4)**
+
+*username: Gabriela*
+
+*password: 24240113.*
+
 
 4️⃣ Carregar Dados Iniciais
 Se quiser iniciar o projeto com dados registrados, use:
@@ -109,10 +115,15 @@ python manage.py loaddata dados.json
 
 ## 🎯 O que o Administrador pode fazer?
 O administrador pode: 
+
 ✅ Adicionar dados em ambientes e sensores.
+
 ✅ Importar arquivos Excel com novos registros.
+
 ✅ Atualizar e deletar dados existentes.
+
 ✅ Filtrar registros por sensor, data e status.
+
 ✅ Exportar dados da tabela para planilhas Excel.
 
 ## 📌 Relacionamento Entre Tabelas
