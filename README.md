@@ -129,6 +129,12 @@ O administrador pode:
 ## 📌 Relacionamento Entre Tabelas
 O sistema segue um modelo relacional entre Sensores, Ambientes e Histórico, garantindo uma estrutura organizada para os dados capturados.
 
+
+## Documentação Postman 📒:
+
+https://documenter.getpostman.com/view/41931886/2sB2x8EAuH
+
+
 ## 💡 Considerações Finais
 Este projeto tem como objetivo tornar o monitoramento urbano mais eficiente, facilitando a gestão de sensores e permitindo decisões baseadas em dados reais. 🔥
 
