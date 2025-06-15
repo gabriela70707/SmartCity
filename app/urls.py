@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import SensoresListCreateAPIView,SensoresDetailAPIView,LoginView, AmbientesListCreateAPIView, AmbientesDetailAPIView,HistoricoListCreateAPIView,HistoricoDetailAPIView,UpdateSensorStatusAPIView,ImportExcelAPIView,ExportExcelAPIView
+from .views import SensoresListCreateAPIView,SensoresDetailAPIView,LoginView, AmbientesListCreateAPIView, AmbientesDetailAPIView,HistoricoListCreateAPIView,HistoricoDetailAPIView,UpdateSensorStatusAPIView,ImportExcelAPIView,ExportExcelAPIView,DownloadExcelModeloAPIView
 
 urlpatterns = [
     path('token/', LoginView.as_view()),  # Para o usuario realizar login
@@ -20,4 +20,5 @@ urlpatterns = [
     #EXCEL
     path('import-excel/', ImportExcelAPIView.as_view()),  # Importar dados via Excel
     path('export-excel/', ExportExcelAPIView.as_view()),  # Rota para exportação
+    path('download-modelo/<str:nome_arquivo>/', DownloadExcelModeloAPIView.as_view()),  # Rota para baixar modelos
 ]

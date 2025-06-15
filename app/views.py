@@ -11,7 +11,8 @@ import pandas as pd
 from django.core.exceptions import ValidationError
 import io   
 from django.http import HttpResponse
-
+from django.http import FileResponse
+import os
 
 #importanções de arquivos do proprio projeto
 from .models import Usuario, Sensores, Historico, Ambientes
@@ -79,6 +80,7 @@ class SensoresDetailAPIView(RetrieveUpdateDestroyAPIView):
         instance = self.get_object()
         instance.delete()
         return Response({"message": "Sensor deletado com sucesso!"}, status=status.HTTP_204_NO_CONTENT)
+
 
 #ATUALIZAR O STATUS DO SENSOR DE FORMA MAIS OBJETIVA
 class UpdateSensorStatusAPIView(APIView):
@@ -278,3 +280,19 @@ class ExportExcelAPIView(APIView):
         response = HttpResponse(output.read(), content_type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
         response["Content-Disposition"] = 'attachment; filename="dados_smartcity.xlsx"'
         return response
+
+
+#PERMITIR QUE O USUARIO BAIXE UM ARQUIVO MODELO PARA PREENCHER OS DADOS
+class DownloadExcelModeloAPIView(APIView):
+    """Permite baixar os modelos de Excel pré-formatados."""
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request, nome_arquivo):
+        # Caminho da pasta `modelos`
+        base_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "modelos")
+        file_path = os.path.join(base_path, nome_arquivo)
+
+        if not os.path.exists(file_path):
+            return Response({"error": "Modelo não encontrado"}, status=404)
+
+        return FileResponse(open(file_path, "rb"), content_type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
