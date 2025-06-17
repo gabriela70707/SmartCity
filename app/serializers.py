@@ -32,30 +32,11 @@ class AmbientesSerializer(serializers.ModelSerializer):
 class HistoricoSerializer(serializers.ModelSerializer):
     sensor_id = serializers.IntegerField(source="sensor.id", read_only=True)  # ID do sensor
     sensor_nome = serializers.CharField(source="sensor.sensor", read_only=True)  # Nome do sensor
+    sensor_mac_address = serializers.CharField(source="sensor.mac_address", read_only=True)  # mac_address do sensor
     ambiente_descricao = serializers.CharField(source="ambiente.descricao", read_only=True) # Descrição do ambiente
     ambiente_id = serializers.IntegerField(source="ambiente.id", read_only=True)  # ID do ambiente
+    ambiente_sig = serializers.IntegerField(source="ambiente.sig", read_only=True)  # ID do ambiente
 
     class Meta:
         model = Historico
-        fields = ['id', 'sensor_id', 'sensor_nome', 'ambiente_id', 'ambiente_descricao', 'valor', 'timestamp']
-
-
-
-"""
-
-Filtro HIstorico
-query_parans -> sensor=temperatura
-
-if sensor:
-   sensores = Sensor.objects.filter(sensor=sensor).values_list('id', flat=True)
-   [1,2,335,7,8,1]
-
-   queryset = queryset.filter(sensor__in = sensores)
-
-   
-SELECT * FROM historico WHERE sensor in (SELECT id FROM SENSORES WHERE sensor='temperatura');
-
-
-
-
-"""
+        fields = ['id', 'sensor_id', 'sensor_nome', 'ambiente_id', 'ambiente_descricao', 'valor', 'timestamp', 'ambiente_sig', 'sensor_mac_address']
