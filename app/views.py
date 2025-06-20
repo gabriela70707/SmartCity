@@ -139,7 +139,7 @@ class AmbientesDetailAPIView(RetrieveUpdateDestroyAPIView):
 #CRUD DE HISTORICO
 class HistoricoListCreateAPIView(ListCreateAPIView):
     """Lista registros históricos e permite criar novos, com filtros."""
-    queryset = Historico.objects.all()
+    queryset = Historico.objects.all().order_by("-timestamp")  # ordena por data decrescente
     serializer_class = HistoricoSerializer
     permission_classes = [IsAuthenticated]
 

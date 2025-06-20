@@ -1,5 +1,4 @@
 #Esse arquivo transforma objetos do banco de dados em formato JSON ermitindo que os dados sejam facilmente enviados e recebidos pela API Django REST Framework.
-
 from rest_framework import serializers
 import re #para fazer validações
 from .models import Usuario, Sensores, Ambientes, Historico
@@ -30,13 +29,30 @@ class AmbientesSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class HistoricoSerializer(serializers.ModelSerializer):
-    sensor_id = serializers.IntegerField(source="sensor.id", read_only=True)  # ID do sensor
-    sensor_nome = serializers.CharField(source="sensor.sensor", read_only=True)  # Nome do sensor
-    sensor_mac_address = serializers.CharField(source="sensor.mac_address", read_only=True)  # mac_address do sensor
-    ambiente_descricao = serializers.CharField(source="ambiente.descricao", read_only=True) # Descrição do ambiente
-    ambiente_id = serializers.IntegerField(source="ambiente.id", read_only=True)  # ID do ambiente
-    ambiente_sig = serializers.IntegerField(source="ambiente.sig", read_only=True)  # ID do ambiente
+    sensor_id = serializers.PrimaryKeyRelatedField(
+        queryset=Sensores.objects.all(), source="sensor"
+    )
+    ambiente_id = serializers.PrimaryKeyRelatedField(
+        queryset=Ambientes.objects.all(), source="ambiente"
+    )
+
+    sensor_nome = serializers.CharField(source="sensor.sensor", read_only=True)
+    sensor_mac_address = serializers.CharField(source="sensor.mac_address", read_only=True)
+    ambiente_descricao = serializers.CharField(source="ambiente.descricao", read_only=True)
+    ambiente_sig = serializers.IntegerField(source="ambiente.sig", read_only=True)
 
     class Meta:
         model = Historico
-        fields = ['id', 'sensor_id', 'sensor_nome', 'ambiente_id', 'ambiente_descricao', 'valor', 'timestamp', 'ambiente_sig', 'sensor_mac_address']
+        fields = [
+            "id",
+            "sensor_id",
+            "sensor_nome",
+            "sensor_mac_address",
+            "ambiente_id",
+            "ambiente_descricao",
+            "ambiente_sig",
+            "valor",
+            "timestamp"
+        ]
+
+

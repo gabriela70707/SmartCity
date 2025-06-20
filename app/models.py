@@ -42,7 +42,7 @@ class Sensores(models.Model):
         return self.sensor
 
 class Ambientes(models.Model):
-    sig = models.IntegerField()
+    sig = models.IntegerField() #20400001
     descricao = models.CharField(max_length=100)
     ni = models.CharField(max_length=10)
     responsavel = models.CharField(max_length=70)
